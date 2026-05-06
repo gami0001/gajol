@@ -1,11 +1,11 @@
 const Nav = () => {
   return (
-    <header className="flex justify-between items-center px-30 py-4 border-b sticky top-0 z-50">
-      <div className="flex flex-col tracking-[0.12em]">
+    <header className="flex justify-between items-center px-30 py-4 border-y sticky top-0 z-50 border-primary-500">
+      <div className="flex flex-col tracking-[0.13em]">
         <h2 className="text-2xl font-bold">
-          NIGHT<span className="text-pink-500">CLUB</span>
+          NIGHT<span className="text-primary-500">CLUB</span>
         </h2>
-        <h3 className="text-[11px] tracking-[0.3em]">HAVE A GOOD TIME</h3>
+        <h3 className="text-[10px] tracking-[0.4em]">HAVE A GOOD TIME</h3>
       </div>
 
       <nav>
