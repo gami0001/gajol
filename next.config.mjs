@@ -1,6 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "nightclub2026.onrender.com",
+      },
+    ],
+  },
 };
-
-export default nextConfig;
