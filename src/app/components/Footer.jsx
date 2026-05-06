@@ -19,16 +19,16 @@ const Footer = () => {
           <div>
             <h4 className="text-primary-500">NEWS</h4>
             <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-            <p>April 17, 2026</p>
+            <p className="text-primary-500">April 17, 2026</p>
             <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-            <p>April 17, 2026</p>
+            <p className="text-primary-500">April 17, 2026</p>
           </div>
           <div>
             <h4 className="text-primary-500">RECENT POSTS</h4>
             <p className="mt-10">It is a long established fact that a reader will be distracted by the readable... </p>
-            <p>5 hours ago</p>
+            <p className="text-primary-500">5 hours ago</p>
             <p className="mt-10">It is a long established fact that a reader will be distracted by the readable... </p>
-            <p>5 hours ago</p>
+            <p className="text-primary-500">5 hours ago</p>
           </div>
         </div>
       </div>
