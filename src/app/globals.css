@@ -1,8 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+}
+
+@theme {
+  /* Primary / accent */
+  --color-primary-500: oklch(0.6535 0.2419 9.27);
+
+  /* Neutrals */
+  --color-white: oklch(1 0 0);
+  --color-black: oklch(0 0 0);
+  --color-gray-500: oklch(0.6434 0 0);
+
+  /* Alpha / overlays */
+  --color-black-85: oklch(0 0 0 / 0.85);
+  --color-black-90: oklch(0 0 0 / 0.9);
 }
 
 @theme inline {
