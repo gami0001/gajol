@@ -1,14 +1,15 @@
 const Nav = () => {
   return (
-    <div>
-      <h1 className="text-4xl text-blue-500 font-bold">Virker Tailwind?</h1>
-      <h2>
-        NIGHT<span>CLUB</span>
-      </h2>
-      <h3>Have a good time</h3>
+    <header className="flex justify-between items-center px-30 py-4 border-b sticky top-0 z-50">
+      <div className="flex flex-col">
+        <h2 className="text-2xl font-bold">
+          NIGHT<span className="text-pink-500">CLUB</span>
+        </h2>
+        <h3 className="text-sm text-gray-500 tracking-wide">HAVE A GOOD TIME</h3>
+      </div>
 
       <nav>
-        <ul class="menu">
+        <ul className="flex gap-8">
           <li>
             <a href="/home">Home</a>
           </li>
@@ -23,7 +24,7 @@ const Nav = () => {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   );
 };
 
