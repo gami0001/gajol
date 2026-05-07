@@ -5,6 +5,9 @@ export default function Home() {
   return (
     <main>
       <EventList />
+      <div>
+        <h2>WANT THE LATEST CLUB NEWS?</h2>
+      </div>
     </main>
   );
 }
