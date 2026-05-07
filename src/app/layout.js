@@ -1,9 +1,8 @@
 import "./globals.css";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
-import Button from "@/components/Button";
 
-export default function RootLayout({ chrildren }) {
+export default function RootLayout({ children }) {
   return (
     <html>
       <head>
@@ -13,7 +12,7 @@ export default function RootLayout({ chrildren }) {
       </head>
       <body>
         <Nav />
-
+        {children}
         <Footer />
       </body>
     </html>
