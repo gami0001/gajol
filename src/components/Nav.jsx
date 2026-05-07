@@ -24,7 +24,7 @@ const Nav = () => {
       <nav>
         <ul className="flex gap-8">
           <li>
-            <a href="/home">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
             <a href="/events">Events</a>
