@@ -1,10 +1,14 @@
 import Image from "next/image";
 import EventList from "../components/EventList";
 import Button from "@/components/Button";
+import Header from "@/components/Header";
+import Nav from "@/components/Nav";
 
 export default function Home() {
   return (
     <main>
+      <Header />
+      <Nav />
       <EventList />
       <div className="my-30">
         <h2 className="text-center text-xl">WANT THE LATEST CLUB NEWS?</h2>
