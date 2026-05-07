@@ -1,8 +1,9 @@
 import "./globals.css";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import Button from "@/components/Button";
 
-export default function RootLayout() {
+export default function RootLayout({ chrildren }) {
   return (
     <html>
       <head>
