@@ -1,7 +1,8 @@
-const CardEvent = ({ id, title, date, location, description, asset }) => {
+import Image from "next/image";
+
+const CardEvent = ({ title, date, location, description }) => {
   return (
     <div>
-      <Image src={asset.url} alt={title} />
       <p>{title}</p>
       <p>{date}</p>
       <p>{location}</p>
