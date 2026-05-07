@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import CardEvent from "./CardEvent";
 
 const Events = () => {
   return (
@@ -12,14 +13,14 @@ const Events = () => {
 const FetchEvent = async () => {
   "use server";
 
-  var url = "https://nightclub2026.onrender.com/events";
+  var url = `https://nightclub2026.onrender.com/events`;
 
   try {
-    const response = await fetch(url, {});
+    const response = await fetch(url);
     const data = await response.json();
 
     return data.events.map((events) => {
-      return <Card key={events.id} id={events.id} title={events.title} date={events.date} location={events.location} description={events.description} images={events[0].asset.url} />;
+      return <CardEvent id={events.id} title={events.title} date={events.date} location={events.location} description={events.description} asset={events.asset} />;
     });
   } catch (error) {
     return <p>Failed to load events. Please try again later.</p>;
