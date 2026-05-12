@@ -21,15 +21,17 @@ const Nav = () => {
 
       <div className="flex items-center justify-between">
         <div className="flex flex-col tracking-[0.13em]">
-          <h2 className="text-2xl font-bold text-white">
-            NIGHT<span className="text-primary-500">CLUB</span>
-          </h2>
+          <Link href="/" className="flex flex-col items-start">
+            <h2 className="text-2xl font-bold text-white uppercase">
+              Night<span className="text-primary-500">Club</span>
+            </h2>
 
-          <h3 className="text-[10px] tracking-[0.4em] text-white">HAVE A GOOD TIME</h3>
+            <h3 className="text-[10px] tracking-[0.4em] text-white uppercase">Have a good time</h3>
+          </Link>
         </div>
 
         <nav className="hidden md:block">
-          <ul className="flex gap-8 text-white">
+          <ul className="flex gap-8 text-white uppercase">
             <li>
               <Link href="/">Home</Link>
             </li>
@@ -67,7 +69,7 @@ const Nav = () => {
           </button>
         </div>
 
-        <ul className="flex h-full flex-col items-center justify-center gap-10 text-3xl">
+        <ul className="flex h-full flex-col items-center justify-center gap-10 text-3xl uppercase">
           <li>
             <Link href="/">Home</Link>
           </li>

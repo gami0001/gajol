@@ -84,7 +84,7 @@ const Contact = () => {
   return (
     <div>
       <Nav />
-      <Hero text="CONTACT US" />
+      <Hero text="Contact us" />
 
       <div className="min-h-screen bg-black flex items-center justify-center p-6">
         <form onSubmit={handleSubmit} className="w-full max-w-2xl space-y-5">
