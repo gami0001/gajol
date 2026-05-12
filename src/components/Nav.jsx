@@ -1,39 +1,74 @@
+"use client";
+
+import Link from "next/link";
+
 const Nav = () => {
   return (
-    <header className="flex justify-between items-center px-30 py-4 border-y sticky top-0 z-50 border-primary-500" style={{ background: "var(--background)" }}>
-      <div
-        className="absolute top-0 left-0 w-10 h-10 bg-primary-500"
-        style={{
-          clipPath: "polygon(0 0, 100% 0, 0 100%)",
-        }}
-      />
+    <header className="sticky top-0 z-50 border-y border-primary-500 bg-black px-6 py-4">
+      <div className="flex items-center justify-between">
+        <div className="flex flex-col tracking-[0.13em]">
+          <h2 className="text-2xl font-bold text-white">
+            NIGHT<span className="text-primary-500">CLUB</span>
+          </h2>
 
-      <div
-        className="absolute bottom-0 right-0 w-15 h-15 bg-primary-500"
-        style={{
-          clipPath: "polygon(100% 100%, 100% 0, 0 100%)",
-        }}
-      />
-      <div className="flex flex-col tracking-[0.13em]">
-        <h2 className="text-2xl font-bold">
-          NIGHT<span className="text-primary-500">CLUB</span>
-        </h2>
-        <h3 className="text-[10px] tracking-[0.4em]">HAVE A GOOD TIME</h3>
+          <h3 className="text-[10px] tracking-[0.4em] text-white">HAVE A GOOD TIME</h3>
+        </div>
+
+        <nav className="hidden md:block">
+          <ul className="flex gap-8 text-white">
+            <li>
+              <Link href="/">Home</Link>
+            </li>
+
+            <li>
+              <Link href="/events">Events</Link>
+            </li>
+
+            <li>
+              <Link href="/book">Book Table</Link>
+            </li>
+
+            <li>
+              <Link href="/contact">Contact Us</Link>
+            </li>
+          </ul>
+        </nav>
+
+        <button popoverTarget="mobile-menu" className="text-3xl text-white md:hidden">
+          ☰
+        </button>
       </div>
 
-      <nav>
-        <ul className="flex gap-8">
+      <nav
+        id="mobile-menu"
+        popover="auto"
+        className="
+    fixed inset-0
+    h-dvh w-dvw
+    bg-black/90
+    text-white
+    m-0 p-0
+  "
+      >
+        <div className="absolute top-6 right-6">
+          <button popoverTarget="mobile-menu" popoverTargetAction="hide" className="text-4xl">
+            ✕
+          </button>
+        </div>
+
+        {/* CENTER LINKS */}
+        <ul className="flex h-full flex-col items-center justify-center gap-10 text-3xl">
           <li>
-            <a href="/">Home</a>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <a href="/events">Events</a>
+            <Link href="/events">Events</Link>
           </li>
           <li>
-            <a href="/book">Book table</a>
+            <Link href="/book">Book Table</Link>
           </li>
           <li>
-            <a href="/contact">Contact us</a>
+            <Link href="/contact">Contact Us</Link>
           </li>
         </ul>
       </nav>
