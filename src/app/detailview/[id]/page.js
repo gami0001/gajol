@@ -1,9 +1,10 @@
 import EventDetail from "@/components/EventDetail";
+import Hero from "@/components/Hero";
 import { Suspense } from "react";
 
 const DetailEvent = async ({ params }) => {
   return (
-    <main className="min-h-screen py-5 px-10 md:px-12">
+    <main>
       <Suspense fallback={<div>Loading product details…</div>}>
         <FetchEventDetail params={params} />
       </Suspense>
@@ -11,12 +12,16 @@ const DetailEvent = async ({ params }) => {
   );
 };
 
-const FetchEventDetail = async ({ params }) => {
+const FetchEventDetail = async ({ params, title }) => {
   const { id } = await params;
   const response = await fetch(`https://nightclub2026.onrender.com/events/${id}`, {});
   const event = await response.json();
 
-  return <EventDetail title={event.title} date={event.date} location={event.location} description={event.description} asset={event.asset?.url} />;
+  return (
+    <div>
+      <EventDetail heroAsset={event.heroAsset?.url} title={event.title} description={event.description} date={event.date} doorsOpen={event.doorsOpen} location={event.location} category={event.category} price={event.price} ageLimit={event.ageLimit} lineup={event.lineup} schedule={event.schedule.time} />
+    </div>
+  );
 };
 
 export default DetailEvent;
