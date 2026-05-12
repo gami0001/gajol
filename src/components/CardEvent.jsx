@@ -23,7 +23,7 @@ const CardEvent = ({ id, title, date, location, description, asset, index }) => 
         <div className="flex gap-2">
           <p className="text-primary-500">{cleanDate}</p>
           <span>|</span>
-          <p>{location}</p>
+          <p className="uppercase">{location}</p>
         </div>
 
         <p className="text-gray-500">{description}</p>
