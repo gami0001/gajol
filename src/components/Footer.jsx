@@ -3,28 +3,28 @@ const Footer = () => {
     <div>
       <div className="grid grid-cols-2 gap-4 mt-10 mx-30">
         <div className="flex flex-col tracking-[0.13em]">
-          <h2 className="text-2xl font-bold">
-            NIGHT<span className="text-primary-500">CLUB</span>
+          <h2 className="text-2xl font-bold uppercase">
+            Night<span className="text-primary-500">Club</span>
           </h2>
-          <h3 className="text-[10px] tracking-[0.4em]">HAVE A GOOD TIME</h3>
+          <h3 className="text-[10px] tracking-[0.4em] uppercase">Have a good time</h3>
 
-          <h4 className="text-primary-500 mt-10">LOCATION</h4>
+          <h4 className="text-primary-500 mt-10 uppercase">Location</h4>
           <p>Kompagnistræde 278</p>
           <p>1265 København K</p>
-          <h4 className="text-primary-500 mt-10">OPENING HOURS</h4>
+          <h4 className="text-primary-500 mt-10 uppercase">Opening Hours</h4>
           <p>WED - THU 10:30 PMTO 3 AM</p>
           <p>SAT - SUN: 11 PM TO 5 AM</p>
         </div>
         <div className="grid grid-cols-2 gap-10">
           <div>
-            <h4 className="text-primary-500">NEWS</h4>
+            <h4 className="text-primary-500 uppercase">News</h4>
             <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
             <p className="text-primary-500">April 17, 2026</p>
             <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
             <p className="text-primary-500">April 17, 2026</p>
           </div>
           <div>
-            <h4 className="text-primary-500">RECENT POSTS</h4>
+            <h4 className="text-primary-500 uppercase">Recent Posts</h4>
             <p className="mt-10">It is a long established fact that a reader will be distracted by the readable... </p>
             <p className="text-primary-500">5 hours ago</p>
             <p className="mt-10">It is a long established fact that a reader will be distracted by the readable... </p>

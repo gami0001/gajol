@@ -5,7 +5,7 @@ const Book = () => {
   return (
     <div>
       <Nav />
-      <Hero text="BOOK TABLE" />
+      <Hero text="Book table" />
     </div>
   );
 };
