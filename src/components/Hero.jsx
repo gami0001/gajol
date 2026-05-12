@@ -10,7 +10,7 @@ const Hero = ({ text = "OVERSKRIFT" }) => {
 
       {/* centered text */}
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <h1 className="text-whitemd:text-3xl">{text}</h1>
+        <h1 className="text-white md:text-3xl uppercase">{text}</h1>
 
         <Image src="/assets/bottom_line2.png" alt="bottom line" width={200} height={20} />
       </div>

@@ -7,7 +7,7 @@ const Events = () => {
   return (
     <div>
       <Nav />
-      <Hero text="EVENTS" />
+      <Hero text="Events" />
       <EventList />
     </div>
   );

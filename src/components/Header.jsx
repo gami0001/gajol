@@ -17,10 +17,10 @@ const Header = () => {
         <Image src="/assets/bottom_line.png" alt="bottom line" width={500} height={30} />
         <div className="grid grid-cols-2 gap-5 mt-5">
           <Link href="/events">
-            <Button variant="secondary">VIEW EVENTS</Button>
+            <Button variant="secondary">View event</Button>
           </Link>
           <Link href="/book">
-            <Button variant="tertiary">BOOK TABLE</Button>
+            <Button variant="tertiary">Book table</Button>
           </Link>
         </div>
       </div>
