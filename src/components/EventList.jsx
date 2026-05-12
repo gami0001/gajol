@@ -19,8 +19,8 @@ const FetchEvent = async () => {
     const response = await fetch(url);
     const data = await response.json();
 
-    return data.events.map((events) => {
-      return <CardEvent id={events.id} title={events.title} date={events.date} location={events.location} description={events.description} asset={events.asset} />;
+    return data.map((event, index) => {
+      return <CardEvent key={event.id} id={event.id} title={event.title} date={event.date} location={event.location} description={event.description} asset={event.asset.url} index={index} />;
     });
   } catch (error) {
     return <p>Failed to load events. Please try again later.</p>;
