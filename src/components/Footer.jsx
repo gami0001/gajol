@@ -1,7 +1,15 @@
+import Image from "next/image";
+
 const Footer = () => {
   return (
-    <div>
-      <div className="grid grid-cols-2 gap-4 mt-10 mx-30">
+    <div className="relative w-full h-100 z-0">
+      <Image src="/assets/bg/footerbg.jpg" alt="background" fill className="object-cover" />
+
+      {/* overlay */}
+      <div className="absolute inset-0 bg-black-90 z-0" />
+
+      {/* content */}
+      <div className="relative z-10 grid grid-cols-2 gap-4 pt-20 mx-30">
         <div className="flex flex-col tracking-[0.13em]">
           <h2 className="text-2xl font-bold uppercase">
             Night<span className="text-primary-500">Club</span>
