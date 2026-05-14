@@ -5,10 +5,8 @@ const Hero = ({ text = "OVERSKRIFT" }) => {
     <div className="relative w-full h-40">
       <Image src="/assets/bg/footerbg.jpg" alt="background" fill className="object-cover" />
 
-      {/* overlay */}
       <div className="absolute inset-0 bg-black-85" />
 
-      {/* centered text */}
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <h1 className="text-white text-[40px] md:text-3xl uppercase">{text}</h1>
 
