@@ -1,4 +1,8 @@
 import Image from "next/image";
+import { TiSocialFacebook } from "react-icons/ti";
+import { FaSnapchatGhost } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { ImCross } from "react-icons/im";
 
 const Footer = () => {
   return (
@@ -27,22 +31,48 @@ const Footer = () => {
           <div>
             <h4 className="text-primary-500 uppercase">News</h4>
             <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-            <p className="text-primary-500">April 17, 2026</p>
+            <p className="text-primary-500 mt-5">April 17, 2026</p>
             <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-            <p className="text-primary-500">April 17, 2026</p>
+            <p className="text-primary-500 mt-5">April 17, 2026</p>
           </div>
+
           <div>
             <h4 className="text-primary-500 uppercase">Recent Posts</h4>
-            <p className="mt-10">It is a long established fact that a reader will be distracted by the readable... </p>
-            <p className="text-primary-500">5 hours ago</p>
-            <p className="mt-10">It is a long established fact that a reader will be distracted by the readable... </p>
-            <p className="text-primary-500">5 hours ago</p>
+
+            <div className="grid grid-cols-[auto_1fr] mt-10 gap-4">
+              <ImCross className="text-primary-500" />
+              <div>
+                <p>It is a long established fact that a reader will be distracted by the readable... </p>
+                <p className="text-primary-500 mt-5">5 hours ago</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-[auto_1fr] mt-10 gap-4">
+              <ImCross className="text-primary-500" />
+              <div>
+                <p>It is a long established fact that a reader will be distracted by the readable... </p>
+                <p className="text-primary-500 mt-5">5 hours ago</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div className="flex justify-between items-center mt-30 mx-10">
         <p className="text-gray-500">Night Club - All Rights Reserved</p>
-        <p>Stay Connected With Us</p>
+        <div>
+          <p> Stay Connected With Us</p>
+          <div className="grid grid-cols-3 gap-10 mt-3">
+            <div className="border border-white p-2">
+              <TiSocialFacebook />
+            </div>
+            <div className="border border-white p-2">
+              <FaSnapchatGhost />
+            </div>
+            <div className="border border-white p-2">
+              <FaInstagram />
+            </div>
+          </div>
+        </div>
         <p className="text-gray-500">Copyright © NightClub</p>
       </div>
     </div>
