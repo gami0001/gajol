@@ -93,8 +93,8 @@ export default function Home() {
           Subscribe to our newsletter and never miss an <span className="text-primary-500">Event</span>
         </h3>
         <form onSubmit={handleSubscribe} className="text-center mt-10">
-          <input className="border-b-1 pb-2 mr-8 bg-black text-white placeholder-white outline-none focus:border-primary-500 transition" type="email" id="email" size="50" required placeholder="Enter Your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <Button type="submit" variant="primary" disabled={loading}>
+          <input className="border-b-1 pb-2 my-auto lg:mr-8 bg-black text-white placeholder-white outline-none focus:border-primary-500 transition" type="email" id="email" size="45" required placeholder="Enter Your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Button className="mt-4 lg:mt-0" type="submit" variant="primary" disabled={loading}>
             {loading ? "Subscribing..." : "Subscribe"}
           </Button>
           {error && <p className="text-red-500 mt-2">{error}</p>}
