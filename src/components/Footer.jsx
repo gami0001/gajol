@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="absolute inset-0 bg-black-90 z-0" />
 
       {/* content */}
-      <div className="relative z-10 grid grid-cols-2 gap-4 pt-20 mx-30">
+      <div className="relative z-10 grid grid-cols-[1fr_2fr] gap-4 pt-20 mx-30">
         <div className="flex flex-col tracking-[0.13em]">
           <h2 className="text-2xl font-bold uppercase">
             Night<span className="text-primary-500">Club</span>
@@ -24,16 +24,27 @@ const Footer = () => {
           <p>Kompagnistræde 278</p>
           <p>1265 København K</p>
           <h4 className="text-primary-500 mt-10 uppercase">Opening Hours</h4>
-          <p>WED - THU 10:30 PMTO 3 AM</p>
-          <p>SAT - SUN: 11 PM TO 5 AM</p>
+          <p className="text-sm">WED - THU 10:30 PMTO 3 AM</p>
+          <p className="text-sm">SAT - SUN: 11 PM TO 5 AM</p>
         </div>
         <div className="grid grid-cols-2 gap-10">
           <div>
             <h4 className="text-primary-500 uppercase">News</h4>
-            <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-            <p className="text-primary-500 mt-5">April 17, 2026</p>
-            <p className="mt-10">Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
-            <p className="text-primary-500 mt-5">April 17, 2026</p>
+
+            <div className="grid grid-cols-[auto_1fr] mt-10 gap-4">
+              <Image src="/assets/content-img/recent_post1.jpg" alt="post1" width={100} height={100} />
+              <div className="ml-4">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+                <p className="text-primary-500 mt-5">April 17, 2026</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-[auto_1fr] mt-10 gap-4">
+              <Image src="/assets/content-img/recent_post2.jpg" alt="post2" width={100} height={100} />
+              <div className="ml-4">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting.</p>
+                <p className="text-primary-500 mt-5">April 17, 2026</p>
+              </div>
+            </div>
           </div>
 
           <div>
@@ -47,7 +58,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-[auto_1fr] mt-10 gap-4">
+            <div className="grid grid-cols-[auto_1fr] mt-15 gap-4">
               <ImCross className="text-primary-500" />
               <div>
                 <p>It is a long established fact that a reader will be distracted by the readable... </p>
