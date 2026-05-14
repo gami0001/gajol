@@ -1,11 +1,72 @@
+"use client";
+
 import Image from "next/image";
 import Button from "@/components/Button";
 import Header from "@/components/Header";
 import Nav from "@/components/Nav";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import FeaturedEvents from "@/components/FeaturedEvents";
+import { z } from "zod";
+
+const newsletterSchema = z.object({
+  email: z.string().email("Please write a valid mail"),
+});
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscribe = async (e) => {
+    e.preventDefault();
+
+    try {
+      newsletterSchema.parse({ email });
+      setError("");
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setError(error.issues[0].message);
+      }
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("https://nightclub2026.onrender.com/contact_messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: "Newsletter Subscriber",
+          email: email,
+          content: "Newsletter subscription",
+          date: new Date().toISOString(),
+        }),
+      });
+
+      if (!response.ok) {
+        setError("Something went wrong, please try again");
+        console.error("API error:", response.status);
+        setLoading(false);
+        return;
+      }
+
+      setError("");
+      setSuccess("You are now subscribed");
+      setEmail("");
+      setLoading(false);
+
+      setTimeout(() => setSuccess(""), 5000);
+    } catch (error) {
+      console.error(error);
+      setError("Something went wrong, please try again");
+      setLoading(false);
+    }
+  };
+
   return (
     <main>
       <Header />
@@ -31,10 +92,14 @@ export default function Home() {
         <h3 className="text-center">
           Subscribe to our newsletter and never miss an <span className="text-primary-500">Event</span>
         </h3>
-        <div className="text-center mt-10">
-          <input className="border-b-1 pb-2 mr-8" type="email" id="email" pattern=".+@example\.com" size="50" required placeholder="Enter Your Email" />
-          <Button variant="primary">Subscribe</Button>
-        </div>
+        <form onSubmit={handleSubscribe} className="text-center mt-10">
+          <input className="border-b-1 pb-2 mr-8 bg-black text-white placeholder-white outline-none focus:border-primary-500 transition" type="email" id="email" size="50" required placeholder="Enter Your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Button type="submit" variant="primary" disabled={loading}>
+            {loading ? "Subscribing..." : "Subscribe"}
+          </Button>
+          {error && <p className="text-red-500 mt-2">{error}</p>}
+          {success && <p className="text-green-500 mt-2">{success}</p>}
+        </form>
       </div>
     </main>
   );
