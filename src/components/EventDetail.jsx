@@ -2,8 +2,9 @@ import Image from "next/image";
 import Hero from "./Hero";
 import Nav from "./Nav";
 import Button from "./Button";
+import Link from "next/link";
 
-const EventDetail = ({ title, heroAsset, description, date, doorsOpen, location, category, price, ageLimit, lineup, schedule }) => {
+const EventDetail = ({ id, title, heroAsset, description, date, doorsOpen, location, category, price, ageLimit, lineup, schedule }) => {
   const imageSrc = heroAsset?.startsWith("/") ? `https://nightclub2026.onrender.com${heroAsset}` : heroAsset;
 
   return (
@@ -55,9 +56,9 @@ const EventDetail = ({ title, heroAsset, description, date, doorsOpen, location,
               </p>
             </div>
 
-            <div className="mt-8">
+            <Link href={`/book?eventId=${id}`}>
               <Button variant="primary">BOOK NOW</Button>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

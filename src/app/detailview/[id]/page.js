@@ -19,7 +19,7 @@ const FetchEventDetail = async ({ params, title }) => {
 
   return (
     <div>
-      <EventDetail heroAsset={event.heroAsset?.url} title={event.title} description={event.description} date={event.date} doorsOpen={event.doorsOpen} location={event.location} category={event.category} price={event.price} ageLimit={event.ageLimit} lineup={event.lineup} schedule={event.schedule.time} />
+      <EventDetail id={id} heroAsset={event.heroAsset?.url} title={event.title} description={event.description} date={event.date} doorsOpen={event.doorsOpen} location={event.location} category={event.category} price={event.price} ageLimit={event.ageLimit} lineup={event.lineup} schedule={event.schedule.time} />
     </div>
   );
 };
