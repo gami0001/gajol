@@ -10,8 +10,5 @@ const nextConfig = {
       },
     ],
   },
-  turbopack: {
-    root: "/Users/emil/Desktop/kea/15_eksamen/gajol",
-  },
 };
 export default nextConfig;
