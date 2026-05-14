@@ -34,16 +34,13 @@ export default function Home() {
     setLoading(true);
 
     try {
-      const response = await fetch("https://nightclub2026.onrender.com/contact_messages", {
+      const response = await fetch("https://nightclub2026.onrender.com/newsletters", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: "Newsletter Subscriber",
           email: email,
-          content: "Newsletter subscription",
-          date: new Date().toISOString(),
         }),
       });
 
