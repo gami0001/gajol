@@ -8,6 +8,7 @@
 @theme {
   /* Primary / accent */
   --color-primary-500: oklch(0.6535 0.2419 9.27);
+  --color-pink-500: oklch(0.45 0.24 2.5);
 
   /* Neutrals */
   --color-white: oklch(1 0 0);
