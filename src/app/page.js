@@ -7,6 +7,9 @@ import Nav from "@/components/Nav";
 import { Suspense, useState } from "react";
 import FeaturedEvents from "@/components/FeaturedEvents";
 import { z } from "zod";
+import { BsForkKnife } from "react-icons/bs";
+import { LiaCocktailSolid } from "react-icons/lia";
+import WelcomeCard from "@/components/WelcomeCard";
 
 const newsletterSchema = z.object({
   email: z.string().email("Please write a valid mail"),
@@ -72,9 +75,11 @@ export default function Home() {
       <Image className="mx-auto" src="/assets/bottom_line2.png" alt="bottom line" width={200} height={20} />
 
       <div className="flex flex-col md:flex-row justify-center gap-6 mt-10 items-center">
-        <Image src="/assets/content-img/thumb1.jpg" alt="Food on table" width={300} height={300} />
-        <Image src="/assets/content-img/reastaurant_1.jpg" alt="Food and waiter" width={300} height={300} />
-        <Image src="/assets/content-img/thumb2.jpg" alt="A girl in the club" width={300} height={300} />
+        <WelcomeCard image="/assets/content-img/thumb1.jpg" icon={<img src="/assets/icon/favicon.png" className="w-8 h-8" />} title="NIGHT CLUB" text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable." />
+
+        <WelcomeCard image="/assets/content-img/reastaurant_1.jpg" icon={<BsForkKnife className="text-primary-500 text-3xl" />} title="RESTAURANT" text="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution." />
+
+        <WelcomeCard image="/assets/content-img/thumb2.jpg" icon={<LiaCocktailSolid className="text-primary-500 text-3xl" />} title="BAR" text="Contrary to popular belief, Lorem Ipsum is not simply random text. its has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin." />
       </div>
 
       <h2 className="pt-30 text-center text-[25px] uppercase">featured events</h2>
