@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@/components/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
 
 const schema = z.object({
@@ -17,9 +17,25 @@ const CommentForm = ({ eventId }) => {
     content: "",
   });
 
+  const [comments, setComments] = useState([]);
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
   const [submitError, setSubmitError] = useState("");
+
+  // FETCH COMMENTS (like Book reservations)
+  useEffect(() => {
+    const fetchComments = async () => {
+      try {
+        const res = await fetch("https://nightclub2026.onrender.com/comments");
+        const data = await res.json();
+        setComments(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchComments();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -35,7 +51,7 @@ const CommentForm = ({ eventId }) => {
     setSuccess("");
     setSubmitError("");
 
-    // Validation
+    // VALIDATION
     try {
       schema.parse(formData);
     } catch (error) {
@@ -48,7 +64,6 @@ const CommentForm = ({ eventId }) => {
 
         setErrors(newErrors);
       }
-
       return;
     }
 
@@ -61,6 +76,7 @@ const CommentForm = ({ eventId }) => {
         body: JSON.stringify({
           eventId: Number(eventId),
           name: formData.name,
+          email: formData.email,
           content: formData.content,
           date: new Date().toISOString(),
         }),
@@ -70,6 +86,11 @@ const CommentForm = ({ eventId }) => {
         throw new Error("Failed to submit comment");
       }
 
+      const newComment = await response.json();
+
+      // UPDATE UI instantly (same pattern as Book)
+      setComments((prev) => [newComment, ...prev]);
+
       setSuccess("Comment submitted successfully!");
 
       setFormData({
@@ -78,8 +99,8 @@ const CommentForm = ({ eventId }) => {
         content: "",
       });
     } catch (error) {
-      setSubmitError("Something went wrong. Try again.");
       console.error(error);
+      setSubmitError("Something went wrong. Try again.");
     }
   };
 
@@ -91,13 +112,11 @@ const CommentForm = ({ eventId }) => {
         <div className="flex flex-col md:flex-row gap-4">
           <div className="w-full">
             <input type="text" name="name" placeholder="Your Name" className="w-full mb-2 p-4 border" value={formData.name} onChange={handleChange} />
-
             {errors.name && <p className="text-pink-500 text-sm mb-4">{errors.name}</p>}
           </div>
 
           <div className="w-full">
             <input type="email" name="email" placeholder="Your Email" className="w-full mb-2 p-4 border" value={formData.email} onChange={handleChange} />
-
             {errors.email && <p className="text-pink-500 text-sm mb-4">{errors.email}</p>}
           </div>
         </div>
