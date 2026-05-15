@@ -1,25 +1,76 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { TiSocialFacebook } from "react-icons/ti";
 import { FaTwitter } from "react-icons/fa";
 import { FaSnapchatGhost } from "react-icons/fa";
 
 const Testimonials = () => {
+  const [testimonials, setTestimonials] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // FETCH API
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const response = await fetch("https://nightclub2026.onrender.com/testimonials");
+
+        const data = await response.json();
+
+        setTestimonials(data);
+      } catch (error) {
+        console.log("Error fetching testimonials:", error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
+
+  // LOADING
+  if (testimonials.length === 0) {
+    return <p className="text-center my-20">Loading...</p>;
+  }
+
+  // CURRENT TESTIMONIAL
+  const testimonial = testimonials[currentIndex];
+
+  // NEXT
+  const nextTestimonial = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1));
+  };
+
+  // PREVIOUS
+  const prevTestimonial = () => {
+    setCurrentIndex((prevIndex) => (prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1));
+  };
+
   return (
-    <div className="text-center my-20 ">
-      <Image src="/assets/content-img/testimonial_1.jpg" alt="testimonial 1" width={170} height={170} className="mx-auto" />
-      <h3 className="mt-5">Alex</h3>
-      <p className="text-gray-500 mt-5 mx-auto max-w-[1000px]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam nihil hic incidunt, accusamus sapiente doloremque ullam vel inventore autem nam non culpa molestias delectus alias velit veritatis commodi aliquam! Nostrum?</p>
+    <div className="text-center my-20 px-5">
+      <Image src={`https://nightclub2026.onrender.com${testimonial.asset.url}`} alt={testimonial.asset.alt} width={170} height={170} className="mx-auto" />
+
+      <h3 className="mt-5 text-2xl">{testimonial.name}</h3>
+
+      <p className="text-gray-500 mt-5 mx-auto max-w-[1000px]">{testimonial.content}</p>
 
       <div className="grid grid-cols-3 gap-5 mt-5 w-35 mx-auto">
-        <div className="border border-white p-2">
+        <a href={testimonial.facebook} target="_blank" className="border border-white p-2 flex justify-center">
           <TiSocialFacebook />
-        </div>
-        <div className="border border-white p-2">
+        </a>
+
+        <a href={testimonial.twitter} target="_blank" className="border border-white p-2 flex justify-center">
           <FaTwitter />
-        </div>
-        <div className="border border-white p-2">
+        </a>
+
+        <div className="border border-white p-2 flex justify-center">
           <FaSnapchatGhost />
         </div>
+      </div>
+
+      <div className="flex justify-center gap-3 mt-10">
+        {Array.from({ length: testimonials.length }).map((_, index) => (
+          <button key={index} onClick={() => setCurrentIndex(index)} className={`w-4 h-4 transition ${currentIndex === index ? "bg-pink-500" : "bg-white"}`} />
+        ))}
       </div>
     </div>
   );
