@@ -5,6 +5,7 @@ const Button = ({ children, onClick, variant = "primary", className = "", type =
     primary: "border-y border-white text-white uppercase",
     secondary: "border border-gray-500 uppercase",
     tertiary: "text-white bg-gradient-to-r from-[oklch(0.6417_0.2372_5.45)] via-[oklch(0.5984 0.2295 348.95)] to-[oklch(0.5588_0.2348_329.1)] uppercase",
+    quaternary: "text-white bg-[oklch(0.6535_0.2419_9.27)] uppercase",
   };
 
   return (
