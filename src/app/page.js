@@ -10,6 +10,7 @@ import { z } from "zod";
 import { BsForkKnife } from "react-icons/bs";
 import { LiaCocktailSolid } from "react-icons/lia";
 import WelcomeCard from "@/components/WelcomeCard";
+import Testimonials from "@/components/Testimonials";
 
 const newsletterSchema = z.object({
   email: z.string().email("Please write a valid mail"),
@@ -88,6 +89,8 @@ export default function Home() {
       <Suspense fallback={<p className="text-center">Loading events...</p>}>
         <FeaturedEvents />
       </Suspense>
+
+      <Testimonials />
 
       <div className="my-30">
         <h2 className="text-center text-xl uppercase">Want the latest club news?</h2>

@@ -11,12 +11,10 @@ const CardEvent = ({ id, title, date, location, description, asset, index }) => 
 
   return (
     <section className={`flex gap-6 ${isReversed ? "flex-row-reverse" : "flex-row"}`}>
-      {/* IMAGE */}
       <div className="relative min-h-100 w-1/2">
         <Image src={imageSrc} alt={title || "event image"} fill className="object-cover" />
       </div>
 
-      {/* TEXT */}
       <div className={`w-1/2 flex flex-col gap-4 pt-10 ${isReversed ? "pl-40 pr-4" : "pr-40 pl-4"}`}>
         <h3 className="text-xl uppercase">{title}</h3>
 
