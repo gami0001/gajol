@@ -8,7 +8,7 @@ const EventDetail = ({ id, title, heroAsset, description, date, doorsOpen, locat
   const imageSrc = heroAsset?.startsWith("/") ? `https://nightclub2026.onrender.com${heroAsset}` : heroAsset;
 
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen ">
       <Nav />
       <Hero text={title} />
       <div className="mx-auto max-w-5xl px-6 py-10">
@@ -55,10 +55,11 @@ const EventDetail = ({ id, title, heroAsset, description, date, doorsOpen, locat
                 <span className="text-gray-500">Age:</span> {ageLimit}
               </p>
             </div>
-
-            <Link href={`/book?eventId=${id}`}>
-              <Button variant="primary">BOOK NOW</Button>
-            </Link>
+            <div className="mt-8 mb-4">
+              <Link href={`/book?eventId=${id}`}>
+                <Button variant="primary">BOOK NOW</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
