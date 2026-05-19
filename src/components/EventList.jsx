@@ -33,8 +33,7 @@ const EventList = () => {
   const totalPages = Math.ceil(events.length / EVENTS_PER_PAGE);
 
   return (
-    <div className="flex flex-col gap-12 mb-15">
-      {/* EVENTS */}
+    <div className="flex flex-col  mb-12">
       {currentEvents.map((event, index) => (
         <CardEvent key={event.id} id={event.id} title={event.title} date={event.date} location={event.location} description={event.description} asset={event.asset.url} index={index} />
       ))}
