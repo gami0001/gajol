@@ -7,6 +7,23 @@ import Link from "next/link";
 const EventDetail = ({ id, title, heroAsset, description, date, doorsOpen, location, category, price, ageLimit, lineup, schedule }) => {
   const imageSrc = heroAsset?.startsWith("/") ? `https://nightclub2026.onrender.com${heroAsset}` : heroAsset;
 
+  const formattedDoorsOpen = new Date(doorsOpen).toLocaleTimeString("da-DK", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+  const formattedDate = new Date(date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
+  const formattedTime = new Date(date).toLocaleTimeString("da-DK", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  console.log("SCHEDULE:", schedule);
+
   return (
     <section className="min-h-screen ">
       <Nav />
@@ -28,7 +45,13 @@ const EventDetail = ({ id, title, heroAsset, description, date, doorsOpen, locat
             </div>
             <div>
               <h3 className="mb-2 font-semibold uppercase text-primary-500">Schedule</h3>
-              <p className="text-gray-500">{schedule}</p>
+              <ul className="text-gray-500 space-y-1">
+                {schedule?.map((item, index) => (
+                  <li key={index}>
+                    <span className="font-medium">{item.time}</span> — {item.label}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
           {/* Right side */}
@@ -37,10 +60,10 @@ const EventDetail = ({ id, title, heroAsset, description, date, doorsOpen, locat
 
             <div className="space-y-4">
               <p>
-                <span className="text-gray-500">Date:</span> {date}
+                <span className="text-gray-500">Date:</span> {formattedDate} · {formattedTime}
               </p>
               <p>
-                <span className="text-gray-500">Doors:</span> {doorsOpen}
+                <span className="text-gray-500">Doors open:</span> {formattedDoorsOpen}
               </p>
               <p>
                 <span className="text-gray-500">Location:</span> {location}
