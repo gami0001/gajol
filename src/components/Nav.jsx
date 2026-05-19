@@ -1,10 +1,44 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 
 const Nav = () => {
+  const pathname = usePathname();
+
+  const [hovered, setHovered] = useState(null);
+  const [underline, setUnderline] = useState({ left: 0, width: 0 });
+
+  const refs = useRef({});
+
+  const navItems = [
+    { name: "Home", href: "/" },
+    { name: "Events", href: "/events" },
+    { name: "Book Table", href: "/book" },
+    { name: "Contact Us", href: "/contact" },
+  ];
+
+  const activeItem = hovered || pathname;
+
+  const setIndicator = (href) => {
+    const el = refs.current[href];
+    if (!el) return;
+
+    setUnderline({
+      left: el.offsetLeft,
+      width: el.offsetWidth,
+    });
+  };
+
+  useEffect(() => {
+    setIndicator(pathname);
+  }, [pathname]);
+
   return (
-    <header className="relative sticky top-0 z-50 border-y border-primary-500 bg-black px-6 md:px-35 py-6">
+    <header className="sticky top-0 z-50 border-y border-primary-500 bg-black px-6 md:px-35 py-6">
       <div
         className="absolute top-0 left-0 w-10 h-10 bg-primary-500"
         style={{
@@ -30,20 +64,66 @@ const Nav = () => {
           </Link>
         </div>
 
-        <nav className="hidden md:block">
-          <ul className="flex gap-8 text-white uppercase">
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/events">Events</Link>
-            </li>
-            <li>
-              <Link href="/book">Book Table</Link>
-            </li>
-            <li>
-              <Link href="/contact">Contact Us</Link>
-            </li>
+        <nav className="hidden md:block relative">
+          <ul className="flex gap-8 uppercase font-medium relative">
+            {navItems.map((item) => {
+              const isActive = pathname === item.href;
+
+              return (
+                <li
+                  key={item.name}
+                  ref={(el) => (refs.current[item.href] = el)}
+                  onMouseEnter={() => {
+                    setHovered(item.href);
+                    setIndicator(item.href);
+                  }}
+                  onMouseLeave={() => {
+                    setHovered(null);
+                    setIndicator(pathname);
+                  }}
+                  className="relative"
+                >
+                  <Link href={item.href}>
+                    <motion.div className="relative overflow-hidden h-6" initial={false} animate={pathname === item.href ? "active" : "rest"} whileHover="hover">
+                      <motion.span
+                        variants={{
+                          rest: { y: 0 },
+                          hover: { y: "-100%" },
+                          active: { y: "-100%" },
+                        }}
+                        transition={{ duration: 0.35 }}
+                        className="block text-white"
+                      >
+                        {item.name}
+                      </motion.span>
+
+                      <motion.span
+                        variants={{
+                          rest: { y: "100%" },
+                          hover: { y: 0 },
+                          active: { y: 0 },
+                        }}
+                        transition={{ duration: 0.35 }}
+                        className="absolute left-0 top-0 block text-primary-500"
+                      >
+                        {item.name}
+                      </motion.span>
+                    </motion.div>
+                  </Link>
+                </li>
+              );
+            })}
+
+            <motion.div
+              className="absolute -bottom-3 h-2"
+              animate={{
+                x: underline.left,
+                width: underline.width,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              <Image src="/assets/bottom_line2.png" alt="underline" fill className="object-contain" />
+            </motion.div>
           </ul>
         </nav>
 
