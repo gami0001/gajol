@@ -24,7 +24,7 @@ const FetchEventDetail = async ({ params }) => {
 
   return (
     <div>
-      <EventDetail id={id} heroAsset={event.heroAsset?.url} title={event.title} description={event.description} date={event.date} doorsOpen={event.doorsOpen} location={event.location} category={event.category} price={event.price} ageLimit={event.ageLimit} lineup={event.lineup} schedule={event.schedule.time} />
+      <EventDetail id={id} heroAsset={event.heroAsset?.url} title={event.title} description={event.description} date={event.date} doorsOpen={event.doorsOpen} location={event.location} category={event.category} price={event.price} ageLimit={event.ageLimit} lineup={event.lineup} schedule={event.schedule} />
       <h2 className="uppercase text-2xl font-bold mb-4 mt-10 px-4 md:mt-20 md:mx-30 md:px-0">{comments.length} Comments</h2>
 
       <div className="px-4 mb-10 md:mx-30 md:px-0 space-y-6">
